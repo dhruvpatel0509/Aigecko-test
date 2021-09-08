@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>AIGECKO TEST</title>
+</head>
+<body>
+<nav class="navbar">
+    <button id="upload_img" class="common-btn">Upload Image</button>
+    <button id="analyse_img" class="common-btn">Analyse Image</button>
+    <button id="list_img" class="common-btn" onclick="listImage()">List Image</button>
+</nav>
+
+<div class="grid-container" id="image-upload-section">
+    <div class="grid-item">
+        <img id="banner-img" src="{{ url_for('static', filename='img/banner.svg') }}" alt="banner svg"/>
+    </div>
+    <div class="grid-item outer-input-div">
+        <div class="inner-input-div">
+            <span id="input-instruction-text">Choose image from your local machine or add valid url.</span>
+        </div>
+        <div class="inner-input-div">
+            <input type="file" id="input-file"/>
+            <label for="input-file"/>Choose an Image</label>
+            <span id="input-file-name"></span>
+        </div>
+        <div class="inner-input-div">
+            <input type="text" id="input-url" placeholder="Enter an URL"/>
+        </div>
+        <div class="inner-input-div">
+            <button id="upload-button" onclick="uploadImage()">Upload</button>
+        </div>
+        <div class="inner-input-div">
+            <div class="status-div"><span class="status-text" id="upload-status-text"></span></div>
+            <div class="detail-div"><span class="detail-text" id="upload-detail-text"></span></div>
+        </div>
+    </div>
+</div>
+
+<div class="grid-container" id="analyse-section">
+    <div class="grid-item outer-analyse-div">
+        <div class="inner-analyse-div">
+            <span id="analyse-instruction-text">Enter an Image id to analyse.</span>
+        </div>
+        <div class="inner-analyse-div">
+            <input type="text" id="input-image-id" placeholder="Enter an Image Id"/>
+        </div>
+        <div class="inner-input-div">
+            <button id="analyse-button" onclick="analyseImage()">Analyse</button>
+        </div>
+        <div class="inner-analyse-div">
+            <div class="status-div"><span class="status-text" id="analyse-status-text"></span></div>
+            <div class="detail-div">
+                <span class="detail-text" id="analyse-detail-text">
+                    <span id="analyse-image-width"></span><br>
+                    <span id="analyse-image-height"></span><br>
+                    <span id="analyse-image"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item">
+        <img id="analyse-img" src="{{ url_for('static', filename='img/analysis.svg') }}" alt="analyse svg"/>
+    </div>
+</div>
+
+<div id="list-image-section">
+    <div id="list-status-text"><span></span></div>
+    <div class="grid-container">
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>
